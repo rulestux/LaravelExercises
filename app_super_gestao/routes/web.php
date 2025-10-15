@@ -51,6 +51,6 @@ Route::get(
 // precisa receber um valor numérico entre 0 e 9;
 // com '+' se indica que ele precisa de ao menos
 // um caractere; a seguir, expressão regular para
-// indicar que 'name' será restrita a receber letras
+// indicar que 'name' ficará restrita a receber letras
 // na string:
 )->where('category_id', '[0-9]+')->where('name', '[A-Za-z]+');
