@@ -17,6 +17,17 @@ Route::get('/about-us', [\App\Http\Controllers\AboutUsController::class, 'aboutU
 
 Route::get('/contact', [\App\Http\Controllers\ContactController::class, 'contact']);
 
+Route::get('/login', function(){ return 'Login'; });
+
+// incluindo prefixo e agrupando rotas:
+Route::prefix('/private')->group(function() {
+Route::get('/clients', function(){ return 'Clientes'; });
+
+Route::get('/suppliers', function(){ return 'Fornecedores'; });
+
+Route::get('/products', function(){ return 'Produtos'; });
+});
+
 // PARÂMETROS:
 //
 // usa-se '?' para indicar ao Laravel que o parâmetro é opcional; atribuem-se
