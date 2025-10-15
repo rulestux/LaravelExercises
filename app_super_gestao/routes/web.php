@@ -10,22 +10,23 @@ use Illuminate\Support\Facades\Route;
 
 // ROTAS:
 // as rotas direcionam para os 'controllers' e os 'controllers' redirecionam
-// as requisições para a 'resources/views/site/':
-Route::get('/', [\App\Http\Controllers\MainController::class,'main']);
+// as requisições para a 'resources/views/site/';
+// rotas nomeadas com o método '->name()':
+Route::get('/', [\App\Http\Controllers\MainController::class,'main'])->name('site.index');
 
-Route::get('/about-us', [\App\Http\Controllers\AboutUsController::class, 'aboutUs']);
+Route::get('/about-us', [\App\Http\Controllers\AboutUsController::class, 'aboutUs'])->name('site.about-us');
 
-Route::get('/contact', [\App\Http\Controllers\ContactController::class, 'contact']);
+Route::get('/contact', [\App\Http\Controllers\ContactController::class, 'contact'])->name('site.contact');
 
-Route::get('/login', function(){ return 'Login'; });
+Route::get('/login', function(){ return 'Login'; })->name('site.login');
 
 // incluindo prefixo e agrupando rotas:
 Route::prefix('/private')->group(function() {
-Route::get('/clients', function(){ return 'Clientes'; });
+Route::get('/clients', function(){ return 'Clientes'; })->name('private.clients');
 
-Route::get('/suppliers', function(){ return 'Fornecedores'; });
+Route::get('/suppliers', function(){ return 'Fornecedores'; })->name('private.suppliers');
 
-Route::get('/products', function(){ return 'Produtos'; });
+Route::get('/products', function(){ return 'Produtos'; })->name('private.products');
 });
 
 // PARÂMETROS:
