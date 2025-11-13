@@ -68,3 +68,19 @@ Route::get('/products', function(){ return 'Produtos'; })->name('private.product
 // na string:
 )->where('category_id', '[0-9]+')->where('name', '[A-Za-z]+');
  */
+
+// REDIRECIONAMENTO DE ROTAS:
+Route::get('/route1', function() {
+    echo 'Rota 1';
+})->name('site.route1');
+
+// redirecionamento com o método 'redirect' da classe 'Route':
+Route::redirect('/route2', 'route1');
+
+// redirecionamento dentro da função de callback:
+Route::get('/route3', function() {
+    return redirect()->route('site.route1');
+})->name('site.route3');
+
+
+
