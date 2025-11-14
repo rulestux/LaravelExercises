@@ -60,12 +60,10 @@ Route::get('/products', function(){ return 'Produtos'; })->name('private.product
     ) {
         echo "Estamos aqui: $name - $category_id";
     }
-// expressão regular para indicar que 'category_id'
-// precisa receber um valor numérico entre 0 e 9;
-// com '+' se indica que ele precisa de ao menos
-// um caractere; a seguir, expressão regular para
-// indicar que 'name' ficará restrita a receber letras
-// na string:
+// expressão regular para indicar que 'category_id' precisa receber um valor
+// numérico entre 0 e 9; com '+' se indica que ele precisa de ao menos um
+// caractere; a seguir, expressão regular para indicar que 'name' ficará
+// restrita a receber letras na string:
 )->where('category_id', '[0-9]+')->where('name', '[A-Za-z]+');
  */
 
@@ -82,5 +80,9 @@ Route::get('/route3', function() {
     return redirect()->route('site.route1');
 })->name('site.route3');
 
-
-
+// ROTA DE CONTINGÊNCIA (FALLBACK):
+// trata-se de uma rota para onde se convergirá todo caminho não encontrado
+// inserido pelo usuário.
+Route::fallback(function() {
+    echo 'A página acessada não existe. <a href="'.route('site.index').'">Clique aqui</a> e volte para a página principal.';
+});
